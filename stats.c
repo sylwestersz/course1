@@ -58,8 +58,8 @@ void print_statistics(unsigned char* array, unsigned int len)
 
     median = find_median(array, len);
     mean   = find_mean(array, len);
-    min    = find_maximum(array, len);
-    max    = find_minimum(array, len);
+    max    = find_maximum(array, len);
+    min    = find_minimum(array, len);
 
 
     printf("\n\n **** ARRAY STATISTICS ****");
