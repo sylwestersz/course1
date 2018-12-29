@@ -12,7 +12,8 @@
  * @file 	stats.h
  * @brief 	Interface to the statistics lib
  *
- * A simple lib to refresh some C programming.
+ * A simple lib to refresh some C programming. All the data manipulated by the lib is 8bit! Thus we safely assume that
+ * 255 is the maximum value that will be handled.
  *
  * @author 	Sylwester Szczepaniak
  * @date 	<Add date >
@@ -46,53 +47,53 @@ void print_array(unsigned char* array, unsigned int len);
 /**
  * @brief Given an array of data and a length, returns the median value
  *
- * @param array pointer to usinged char data
- * @param len length of the data
+ * @param 	array 	pointer to usinged char data
+ * @param 	len 	length of the data
  *
  * @return The median of the input array
  */
-unsigned int find_median(unsigned char* array, unsigned int len);
+unsigned char find_median(unsigned char* array, unsigned int len);
 
 /**
  * @brief Given an array of data and a length, returns the mean value
  *
- * @param array pointer to usinged char data
- * @param len length of the data
+ * @param 	array 	pointer to usinged char data
+ * @param 	len 	length of the data
  *
  * @return The median of the input array
  */
-unsigned int find_mean(unsigned char* array, unsigned int len);
+unsigned char find_mean(unsigned char* array, unsigned int len);
 
 /**
  * @brief Given an array of data and a length, returns the maximum value
  *
- * @param array pointer to usinged char data
- * @param len length of the data
+ * @param 	array 	pointer to usinged char data
+ * @param 	len 	length of the data
  *
- * @return The median of the input array
+ * @return The maximum of the input array
  */
-unsigned int find_maximum(unsigned char* array, unsigned int len);
+unsigned char find_maximum(unsigned char* array, unsigned int len);
 
 /**
  * @brief Given an array of data and a length, returns the minimum value
  *
- * @param array pointer to usinged char data
- * @param len length of the data
+ * @param 	array 	pointer to usinged char data
+ * @param 	len 	length of the data
  *
- * @return The median of the input array
+ * @return The minimum of the input array
  */
-unsigned int find_minimum(unsigned char* array, unsigned int len);
+unsigned char find_minimum(unsigned char* array, unsigned int len);
 
 /**
  * @brief Given an array of data and a length, sorts the array from largest to smallest.
  *
  * The zeroth Element is the largest value, and the last element (n-1) is the smallest value.
  *
- * @param array pointer to usinged char data
- * @param len length of the data
+ * @param 	array 	pointer to usinged char data
+ * @param 	len 	length of the data
  *
- * @return The median of the input array
+ * @return None - array is sorted in place
  */
-unsigned int sort_array(unsigned char* array, unsigned int len);
+void sort_array(unsigned char* array, unsigned int len);
 
 #endif /* __STATS_H__ */
