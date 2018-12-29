@@ -9,16 +9,14 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file 	stats.c
+ * @brief 	Implementation of stats lib
  *
- * <Add Extended Description Here>
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author 	Sylwester Szczepaniak
+ * @date 	29.12.2018
  *
  */
-
 
 
 #include <stdio.h>
@@ -41,3 +39,35 @@ void main() {
 }
 
 /* Add other Implementation File Code Here */
+
+void print_statistics(unsigned char* array, unsigned int len)
+{
+}
+
+void print_array(unsigned char* array, unsigned int len)
+{
+}
+
+unsigned int find_median(unsigned char* array, unsigned int len)
+{
+	return 0;
+}
+
+unsigned int find_mean(unsigned char* array, unsigned int len)
+{
+	return 0;
+}
+unsigned int find_maximum(unsigned char* array, unsigned int len)
+{
+	return 0;
+}
+
+unsigned int find_minimum(unsigned char* array, unsigned int len)
+{
+	return 0;
+}
+
+unsigned int sort_array(unsigned char* array, unsigned int len)
+{
+	return 0;
+}
