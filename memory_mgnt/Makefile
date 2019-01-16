@@ -13,26 +13,22 @@ CC = arm-none-eabi-gcc
 LD = arm-none-eabi-ld
 CPU = cortex-m4
 ARCH = armv7e-m
-LDFLAGS =  -T $(LINKER_FILE)
+LDFLAGS =  -T $(LINKER_FILE) -Xlinker -Map=main.map
 
 #all source files will be compiled into object files for MSP432
 OBJS := $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Werror -O0 -std=c99 -mcpu=$(CPU) -mthumb \
 		 -march=$(ARCH) -mfloat-abi=hard -mfpu=fpv4-sp-d16 \
-		 --specs=nosys.specs
+		 --specs=nosys.specs 
 
 # make main target the default one
-$(TARGET).out: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS)
+$(TARGET).out: 
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(SRCS)
 
 #Generate object files
 %.o: %.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) $< -o $@
-
-#Generate preprocessor output
-%.i: %.c
-	$(CC) -E $(CFLAGS) $< -o $@
 
 #Generate assembly output
 %.asm: %.c
@@ -42,13 +38,13 @@ $(TARGET).out: $(OBJS)
 %.asm: %.c
 	$(CC) -MP $(CFLAGS) $< -o $@
 
-#Generate dependency files
+#Generate map file
 %.map: %.out
 	$(CC) -Map=$(TARGET).out $(CFLAGS) $< -o $@
 
 # decided to put all HPONY targets last
 .PHONY: build
-build: $(TARGET).out
+build: $(TARGET).out $(TARGET).map
 
 .PHONY: clean
 clean:
