@@ -17,8 +17,6 @@
  *
  */
 
-
-#include <stdio.h>
 #include <string.h>
 #include "stats.h"
 
@@ -38,6 +36,7 @@ static unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
 
 void print_statistics(unsigned char* array, unsigned int len)
 {
+#if FIXME
     unsigned char   median = 0;
     unsigned char   mean = 0;
     unsigned char   min = 0;
@@ -49,27 +48,30 @@ void print_statistics(unsigned char* array, unsigned int len)
     min    = find_minimum(array, len);
 
 
-    printf("\n\n **** ARRAY STATISTICS ****");
-    printf("\n\t MEDIAN: %d", median);
-    printf("\n\t MEAN:   %d", mean);
-    printf("\n\t MAX:    %d", max);
-    printf("\n\t MIN:    %d\n", min);
+    PRINTF("\n\n **** ARRAY STATISTICS ****");
+    PRINTF("\n\t MEDIAN: %d", median);
+    PRINTF("\n\t MEAN:   %d", mean);
+    PRINTF("\n\t MAX:    %d", max);
+    PRINTF("\n\t MIN:    %d\n", min);
+#endif
 }
 
 void print_array(unsigned char* array, unsigned int len)
 {
+#ifdef VERBOSE
 	if (array !=NULL)
 	{
 		for(unsigned int i = 0; i < len; i++)
 		{
             if (!(i % 8)) // put 8 elements per line
             {
-                printf("\n");
+                PRINTF("\n");
             }
-			printf("[%4.0d] ",array[i]);
+            PRINTF("[%4.0d] ",array[i]);
 		}
 	}
     printf("\n");
+#endif
 }
 
 unsigned char find_median(unsigned char* array, unsigned int len)
