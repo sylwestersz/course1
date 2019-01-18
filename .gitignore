@@ -1,6 +1,13 @@
 #Eclipse project
 .project
 
+#Qt project files for mem-mgnt project only!
+mem_mgnt.config
+mem_mgnt.creator
+mem_mgnt.creator.user
+mem_mgnt.files
+mem_mgnt.includes
+
 # Prerequisites
 *.d
 
