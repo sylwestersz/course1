@@ -29,7 +29,7 @@ include sources.mk
 PLATFORM = MSP432
 
 # Architectures Specific Flags
-LINKER_FILE = ../msp432p401r.lds
+LINKER_FILE = msp432p401r.lds
 #SPECS = 
 
 # Compiler Flags and Defines
