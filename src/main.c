@@ -16,8 +16,11 @@
  * @date January 18 2019
  *
  */
-#include "platform.h"
-#include "memory.h"
+#ifdef COURSE1
+    #include "course1.h"
+#endif
+#include <stdio.h>
+#include "data.h"
 
 #define MAX_LENGTH (10)
 char buffer[MAX_LENGTH];

@@ -26,14 +26,14 @@
 include sources.mk
 
 # Platform Overrides in case none defined
-PLATFORM = MSP432
+PLATFORM = HOST
 
 # Architectures Specific Flags
 LINKER_FILE = msp432p401r.lds
 #SPECS = 
 
 # Compiler Flags and Defines
-TARGET = c1m2
+TARGET = final
 
 #CPPFLAGs = 
 
@@ -64,7 +64,7 @@ else ifeq ($(PLATFORM), HOST)
 	OBJS := $(SOURCES_COMMON:.c=.o)
 	INCLUDE_DIRS = $(INCLUDE_DIRS_COMMON) 
 
-	CFLAGS = -Wall -Werror -O0 -std=c99 -D $(PLATFORM) $(INCLUDE_DIRS)
+	CFLAGS = -Wall -Werror -O0 -std=c99 -D $(PLATFORM) -D COURSE1 -D VERBOSE $(INCLUDE_DIRS)
 
 else
 	#echo "Please specify know PLATFORM ('MSP432' or 'HOST')!"
@@ -93,7 +93,7 @@ $(TARGET).out: $(OBJS)
 %.asm: %.c
 	$(CC) -MP $(CFLAGS) $< -o $@
 
-#Generate dependency files
+#Generate map file for main
 %.map: %.out
 	$(CC) -Map=$(TARGET).out $(CFLAGS) $< -o $@
 
@@ -108,5 +108,5 @@ build: $(TARGET).out
 
 .PHONY: clean
 clean:
-	rm -f $(OBJS) $(TARGET).out $(TARGET).map *.s *.i
+	rm -f $(OBJS) $(TARGET).out $(TARGET).map *.s *.i *.asm
 

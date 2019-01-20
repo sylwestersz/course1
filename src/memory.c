@@ -50,34 +50,72 @@ void clear_all(char * ptr, unsigned int size){
 
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length)
 {
-    return 0;
+    uint8_t * tmp_src = src;
+    uint8_t * tmp_dst = dst;
+
+    while(length > 0)
+    {
+        *(tmp_dst++) = *(tmp_src++);
+        length--;
+    }
+
+    return dst;
 }
 
 uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length)
 {
-    return 0;
+    my_memmove(src, dst, length);
+
+    return dst;
 }
 
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value)
 {
-    return 0;
+    uint8_t * tmp_src = src;
+
+    while(length > 0)
+    {
+        *(tmp_src++) = value;
+        length--;
+    }
+
+    return src;
 }
 
 uint8_t * my_memzero(uint8_t * src, size_t length)
 {
-    return 0;
+    my_memset(src, length, 0x00);
+    return src;
 }
 
 uint8_t * my_reverse(uint8_t * src, size_t length)
 {
-    return 0;
+
+    uint8_t tmp = 0;
+    uint32_t counter= 0;
+
+    for(counter = 0; counter < length/2; counter++)
+    {
+        tmp = *(src + counter);
+        *(src + counter) = *(src + (length - 1) - counter);
+        *(src + (length - 1) - counter) = tmp;
+    }
+
+    return src;
 }
 
-int32_t * reserve_words(size_t length)
+uint32_t * reserve_words(size_t length)
 {
-    return 0;
+    const uint8_t word_size_bytes = 4;
+    uint32_t * ret_ptr = NULL;
+
+    ret_ptr = calloc(length, word_size_bytes);
+
+    return (ret_ptr);
 }
 
-void free_words(int32_t * src)
-{}
+void free_words(uint32_t *src)
+{
+    free(src);
+}
 
